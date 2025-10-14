@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizContainer = document.getElementById('quiz-container')
   const startContainer = document.getElementById('start-container')
   const endContainer = document.getElementById('end-container')
+  const nextBtn = document.getElementById('next-btn')
   
   endContainer.style.display = 'none'
   quizContainer.style.display = 'none'
@@ -24,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     nextQuestion()
     quiz.timer.start()
   })
+
+  nextBtn.addEventListener('click', () => {
+    nextBtn.style.display = 'none'
+    nextQuestion()
+  })
   
   function nextQuestion() {
     
@@ -31,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = quiz.getNextQuestion()
     const questionText = document.getElementById('question-text')
     const answerBtns = document.getElementById('answer-btns')
-    const nextBtn = document.getElementById('next-btn')
     const timer = document.getElementById('timer')
     quiz.timer.start()
     
@@ -77,10 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       })
       answerBtns.appendChild(btn)
-    })
-    nextBtn.addEventListener('click', () => {
-      nextQuestion()
-      nextBtn.style.display = 'none'
     })
   }
 })
