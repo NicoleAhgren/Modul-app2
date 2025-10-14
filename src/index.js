@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   startBtn.addEventListener('click', () => {
     startContainer.style.display = 'none'
     quizContainer.style.display = 'block'
-    quiz.startQuiz(3, 10)
+    quiz.startQuiz(5, 10)
     nextQuestion()
   })
 
@@ -28,22 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionText = document.getElementById('question-text')
     const answerBtns = document.getElementById('answer-btns')
     const nextBtn = document.getElementById('next-btn')
-
+    
     questionText.textContent = question.text
     answerBtns.innerHTML = ''
-
+    
     question.answers.forEach((answer, index) => {
       const btn = document.createElement('button')
+      btn.classList.add('answer-btn')
       btn.textContent = answer
+
       btn.addEventListener('click', () => {
         const correctAnswer = quiz.checkAnswer(index)
-        if (correctAnswer) {
-          btn.style.backgroundColor = 'green'
-          nextBtn.style.display = 'block'
-        } else {
-          btn.style.backgroundColor = 'red'
-          nextBtn.style.display = 'block'
-        }
+        btn.classList.add(correctAnswer ? 'correct' : 'wrong')
+        nextBtn.style.display = 'block'
+
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = true
+        })
       })
       answerBtns.appendChild(btn)
     })

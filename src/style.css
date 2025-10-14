@@ -43,9 +43,41 @@ body {
   text-align: center;
   width: 50%;
   height: 60vh;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 #question-text {
   font-size: 25px;
+  font-weight: bold;
+}
+#answer-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+  height: 150px;
+}
+#answer-btns button {
+  background-color: #f0f0f0;
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+#answer-btns button:hover {
+  border: 3px solid rgb(66, 154, 221);
+}
+.correct {
+  border: 3px solid rgb(52, 188, 72) !important;
+}
+.wrong {
+  border: 3px solid rgb(224, 74, 74) !important;
+}
+.answer-btn:disabled {
+  pointer-events: none;
+  color: black;
 }
 
