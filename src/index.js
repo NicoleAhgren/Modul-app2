@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-btn')
   const quizContainer = document.getElementById('quiz-container')
   const startContainer = document.getElementById('start-container')
+  const endContainer = document.getElementById('end-container')
 
+  endContainer.style.display = 'none'
   quizContainer.style.display = 'none'
 
   const quiz = new QuizEngine()
@@ -24,10 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   function nextQuestion() {
+
     const question = quiz.getNextQuestion()
     const questionText = document.getElementById('question-text')
     const answerBtns = document.getElementById('answer-btns')
     const nextBtn = document.getElementById('next-btn')
+
+    if (!question) {
+      quizContainer.style.display = 'none'
+      endContainer.style.display = 'block'
+      endContainer.innerHTML = `Points: ${quiz.score}`
+      return
+    }
     
     questionText.textContent = question.text
     answerBtns.innerHTML = ''
