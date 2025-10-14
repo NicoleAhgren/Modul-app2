@@ -93,3 +93,13 @@ body {
   justify-content: center;
   align-content: center;
 }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  top: 20px;
+  right: 20px;
+  color: black;
+}
+.timeExpired {
+  border: 3px solid rgb(66, 154, 221) !important; 
+}

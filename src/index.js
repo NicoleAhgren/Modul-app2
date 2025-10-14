@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizContainer = document.getElementById('quiz-container')
   const startContainer = document.getElementById('start-container')
   const endContainer = document.getElementById('end-container')
-
+  
   endContainer.style.display = 'none'
   quizContainer.style.display = 'none'
-
+  
   const quiz = new QuizEngine()
   quiz.addQuestion('What year did ABBA win Eurovision?', ['1972', '1973', '1974', '1975'], 2)
   quiz.addQuestion('Which famous artist is known for creating the album The Wall?', ['David Bowie', 'Pink Floyd', 'The Who', 'Genesis'], 1)
@@ -16,22 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
   quiz.addQuestion('Which composer wrote the opera Don Giovanni?', ['Mozart', 'Bach', 'Beethoven', 'Verdi'], 0)
   quiz.addQuestion('Which band released the album Dark Side of the Moon?', ['The Beatles', 'Pink Floyd', 'Led Zeppelin', 'Queen'], 1)
   quiz.addQuestion('Who is known as the "King of Pop"?', ['Elvis Presley', 'Michael Jackson', 'Prince', 'Freddie Mercury'], 1)
-
-
+  
   startBtn.addEventListener('click', () => {
     startContainer.style.display = 'none'
     quizContainer.style.display = 'block'
     quiz.startQuiz(5, 10)
     nextQuestion()
+    quiz.timer.start()
   })
-
+  
   function nextQuestion() {
-
+    
+    let timerInterval
     const question = quiz.getNextQuestion()
     const questionText = document.getElementById('question-text')
     const answerBtns = document.getElementById('answer-btns')
     const nextBtn = document.getElementById('next-btn')
-
+    const timer = document.getElementById('timer')
+    quiz.timer.start()
+    
     if (!question) {
       quizContainer.style.display = 'none'
       endContainer.style.display = 'block'
@@ -42,16 +45,32 @@ document.addEventListener('DOMContentLoaded', () => {
     questionText.textContent = question.text
     answerBtns.innerHTML = ''
     
+    timerInterval = setInterval(() => {
+      const timeLeft = quiz.timer.getTimeLeft()
+      timer.textContent = `Time left: ${timeLeft}s`
+    
+      if (quiz.timer.isExpired()) {
+        clearInterval(timerInterval)
+        timer.textContent = 'Time is up!'
+        nextBtn.style.display = 'block'
+        
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = true
+          btn.classList.add('timeExpired')
+        })
+      }
+    }, 1000)
+
     question.answers.forEach((answer, index) => {
       const btn = document.createElement('button')
       btn.classList.add('answer-btn')
       btn.textContent = answer
-
+      
       btn.addEventListener('click', () => {
         const correctAnswer = quiz.checkAnswer(index)
         btn.classList.add(correctAnswer ? 'correct' : 'wrong')
         nextBtn.style.display = 'block'
-
+        
         document.querySelectorAll('.answer-btn').forEach(btn => {
           btn.disabled = true
         })
