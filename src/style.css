@@ -69,12 +69,15 @@ body {
 }
 #answer-btns button:hover {
   border: 3px solid rgb(66, 154, 221);
+  background-image: linear-gradient(to right, rgb(29, 121, 191), #54d3ed);
 }
 .correct {
-  border: 3px solid rgb(52, 188, 72) !important;
+  border: 3px solid rgb(45, 152, 61) !important;
+  background-image: linear-gradient(to right, rgb(45, 152, 61), #7bec5f)
 }
 .wrong {
   border: 3px solid rgb(224, 74, 74) !important;
+  background-image: linear-gradient(to right, rgb(190, 63, 63), #e67353)
 }
 .answer-btn:disabled {
   pointer-events: none;
@@ -96,10 +99,25 @@ body {
 #timer {
   font-size: 20px;
   font-weight: bold;
-  top: 20px;
-  right: 20px;
   color: black;
+  text-align: right;
+  margin-top: -55px;
+  margin-bottom: 60px;
 }
 .timeExpired {
   border: 3px solid rgb(66, 154, 221) !important; 
+}
+#next-btn {
+  background-image: linear-gradient(to right, #ca5eeb, #66e0eb);
+  color: rgb(0, 0, 0);
+  border: solid 2px rgb(214, 104, 233);
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 40%;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 225px;
 }

@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (quiz.timer.isExpired()) {
         clearInterval(timerInterval)
         timer.textContent = 'Time is up!'
+        timer.style.color = 'tomato'
         nextBtn.style.display = 'block'
         
         document.querySelectorAll('.answer-btn').forEach(btn => {
