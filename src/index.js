@@ -26,7 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function nextQuestion() {
     const question = quiz.getNextQuestion()
     const questionText = document.getElementById('question-text')
+    const answerBtns = document.getElementById('answer-btns')
 
     questionText.textContent = question.text
+    answerBtns.innerHTML = ''
+
+    question.answers.forEach((answer, index) => {
+      const btn = document.createElement('button')
+      btn.textContent = answer
+      btn.addEventListener('click', () => {
+        const correctAnswer = quiz.checkAnswer(index)
+        if (correctAnswer) {
+          btn.style.backgroundColor = 'green'
+          nextQuestion()
+        } else {
+          btn.style.backgroundColor = 'red'
+        }
+      })
+      answerBtns.appendChild(btn)
+    })
   }
 })

@@ -45,3 +45,7 @@ body {
   height: 60vh;
   display: none;
 }
+#question-text {
+  font-size: 25px;
+}
+
