@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = quiz.getNextQuestion()
     const questionText = document.getElementById('question-text')
     const answerBtns = document.getElementById('answer-btns')
+    const nextBtn = document.getElementById('next-btn')
 
     questionText.textContent = question.text
     answerBtns.innerHTML = ''
@@ -38,12 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const correctAnswer = quiz.checkAnswer(index)
         if (correctAnswer) {
           btn.style.backgroundColor = 'green'
-          nextQuestion()
+          nextBtn.style.display = 'block'
         } else {
           btn.style.backgroundColor = 'red'
+          nextBtn.style.display = 'block'
         }
       })
       answerBtns.appendChild(btn)
+    })
+    nextBtn.addEventListener('click', () => {
+      nextQuestion()
+      nextBtn.style.display = 'none'
     })
   }
 })
