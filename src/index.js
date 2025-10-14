@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.classList.add('timeExpired')
         })
       }
-    }, 1000)
+    })
 
     question.answers.forEach((answer, index) => {
       const btn = document.createElement('button')
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const correctAnswer = quiz.checkAnswer(index)
         btn.classList.add(correctAnswer ? 'correct' : 'wrong')
         nextBtn.style.display = 'block'
+        clearInterval(timerInterval)
         
         document.querySelectorAll('.answer-btn').forEach(btn => {
           btn.disabled = true
