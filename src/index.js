@@ -13,12 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const quiz = new QuizEngine()
   quiz.addQuestion('What year did ABBA win Eurovision?', ['1972', '1973', '1974', '1975'], 2)
-  quiz.addQuestion('Which famous artist is known for creating the album The Wall?', ['David Bowie', 'Pink Floyd', 'The Who', 'Genesis'], 1)
   quiz.addQuestion('Which composer is known for his symphonies and was deaf?', ['Mozart', 'Bach', 'Beethoven', 'Chopin'], 2)
   quiz.addQuestion('Which composer wrote the opera Don Giovanni?', ['Mozart', 'Bach', 'Beethoven', 'Verdi'], 0)
   quiz.addQuestion('Which band released the album Dark Side of the Moon?', ['The Beatles', 'Pink Floyd', 'Led Zeppelin', 'Queen'], 1)
   quiz.addQuestion('Who is known as the "King of Pop"?', ['Elvis Presley', 'Michael Jackson', 'Prince', 'Freddie Mercury'], 1)
+  quiz.addQuestion('Which artist sings the song "Jolene"?', ['Dolly Parton', 'Reba McEntire', 'Carrie Underwood', 'Miranda Lambert'], 0)
+  quiz.addQuestion('What city in the UK does the band The Beatles originate from?', ['London', 'Liverpool', 'Manchester', 'Birmingham'], 1)
+  quiz.addQuestion('What is eminem also known as?', ['Slim Shady', 'E', 'Shady', 'Em'], 0)
+  quiz.addQuestion('Which Spice girl was known as "Sporty Spice"?', ['Mel B', 'Mel C', 'Emma Bunton', 'Geri Halliwell'], 1)
+  quiz.addQuestion('Which famous artist made the song "Uncover" at 15?', ['Zara Larsson', 'Tove Lo', 'Robyn', 'Lykke Li'], 0)
   
+
   startBtn.addEventListener('click', () => {
     startContainer.style.display = 'none'
     quizContainer.style.display = 'block'
