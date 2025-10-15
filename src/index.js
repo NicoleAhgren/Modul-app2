@@ -46,8 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
       endContainer.style.display = 'block'
       endContainer.innerHTML = `
       <div>
-      <h1>Resultat:</h1>
+      <h1>Results:</h1>
       <h2>Points: ${quiz.score} / ${quiz.activeQuestions.length} </h2>
+      <h3> Exact answer stats:</h3>
+      <p>Time expired: ${quiz.getStats().timeExpired}</p>
+      <p>Correct answers: ${quiz.getStats().correct}</p>
+      <p>Wrong answers: ${quiz.getStats().wrong}</p>
       </div>
       <button id="restart-btn">Restart</button>
       `
@@ -57,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         endContainer.style.display = 'none'
         startContainer.style.display = 'block'
       })
-      // endContainer.innerHTML = `Points: <pre>${JSON.stringify(quiz.getStats(), null, 2)}</pre>`
       console.log(quiz.getStats())
       console.log(quiz.summary())
       console.log(quiz.getAnswerLog())
@@ -106,8 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
-// kanske ta bort så att allt inte är i mitten så den kan se bättre ut när next question kommer upp
-// Fixa Så att man får ut sina poäng i slutet
-// En knapp för att börja om quizet i slutet
 // Om tid kanske att tiden ändrar färg från grön till röd när det är 3 sekunder kvar
 // DOKUMENTATION

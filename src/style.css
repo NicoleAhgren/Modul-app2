@@ -31,7 +31,7 @@ body {
   font-weight: bold;
   font-size: 20px;
 }
-#start-btn:hover {
+#start-btn:hover, #restart-btn:hover, #next-btn:hover {
   transform: scale(1.05);
   transition: 0.8s;
 }
@@ -43,9 +43,7 @@ body {
   text-align: center;
   width: 50%;
   height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  position: relative;
 }
 #question-text {
   font-size: 25px;
@@ -85,16 +83,6 @@ body {
 }
 
 #end-container {
-  /* background-color: rgba(255, 255, 255);
-  border: 2px solid black;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 50%;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-content: center; */
   background-color: rgba(255, 255, 255);
   border: 2px solid black;
   padding: 20px;
@@ -102,15 +90,14 @@ body {
   text-align: center;
   width: 50vh;
   height: 50vh;
-
 } 
  #timer {
   font-size: 20px;
   font-weight: bold;
   color: black;
   text-align: right;
-  margin-top: -55px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 .timeExpired {
   border: 3px solid rgb(66, 154, 221) !important; 
@@ -127,7 +114,8 @@ body {
   margin-top: 50px;
   font-weight: bold;
   font-size: 20px;
-  margin-left: 225px;
+  position: absolute;
+  left: 29%;
 } 
 #restart-btn {
   background-image: linear-gradient(to right, #ca5eeb, #66e0eb);
@@ -137,9 +125,8 @@ body {
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  width: 40%;
-  margin-top: 50px;
+  width: 70%;
   font-weight: bold;
   font-size: 20px;
-  margin-left: 225px;
+  margin-top: 20px;
 }
