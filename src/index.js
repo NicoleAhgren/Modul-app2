@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   endContainer.style.display = 'none'
   quizContainer.style.display = 'none'
+  nextBtn.style.display = 'none'
   
   const quiz = new QuizEngine()
   quiz.addQuestion('What year did ABBA win Eurovision?', ['1972', '1973', '1974', '1975'], 2)
@@ -43,7 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!question) {
       quizContainer.style.display = 'none'
       endContainer.style.display = 'block'
-      endContainer.innerHTML = `Points: ${quiz.score}`
+      endContainer.innerHTML = `
+      <div>
+      <h1>Resultat:</h1>
+      <h2>Points: ${quiz.score} / ${quiz.activeQuestions.length} </h2>
+      </div>
+      <button id="restart-btn">Restart</button>
+      `
+      const restart = document.getElementById('restart-btn')
+      restart.addEventListener('click', () => {
+        quiz.resetQuiz()
+        endContainer.style.display = 'none'
+        startContainer.style.display = 'block'
+      })
+      // endContainer.innerHTML = `Points: <pre>${JSON.stringify(quiz.getStats(), null, 2)}</pre>`
+      console.log(quiz.getStats())
+      console.log(quiz.summary())
+      console.log(quiz.getAnswerLog())
       return
     }
     
@@ -59,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timer.textContent = 'Time is up!'
         timer.style.color = 'tomato'
         nextBtn.style.display = 'block'
+
+        quiz.checkAnswer()
         
         document.querySelectorAll('.answer-btn').forEach(btn => {
           btn.disabled = true
@@ -86,3 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 })
+
+// kanske ta bort så att allt inte är i mitten så den kan se bättre ut när next question kommer upp
+// Fixa Så att man får ut sina poäng i slutet
+// En knapp för att börja om quizet i slutet
+// Om tid kanske att tiden ändrar färg från grön till röd när det är 3 sekunder kvar
+// DOKUMENTATION
