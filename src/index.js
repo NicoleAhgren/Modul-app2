@@ -114,5 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
-// Om tid kanske att tiden ändrar färg från grön till röd när det är 3 sekunder kvar
 // DOKUMENTATION

@@ -1,2 +1,0 @@
-# Reflektion clean code
-
