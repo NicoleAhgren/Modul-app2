@@ -27,6 +27,7 @@ class QuizApp {
 
     if (!question) {
       this.#handleQuizEnd()
+      return
     }
 
     this.#displayQuestion(question)
@@ -99,6 +100,10 @@ class QuizApp {
         this.elements.endContainer.style.display = 'none'
         this.elements.startContainer.style.display = 'block'
       })
+      console.log(this.quiz.getStats())
+      console.log(this.quiz.summary())
+      console.log(this.quiz.getAnswerLog())
+      return
     }
 }
 

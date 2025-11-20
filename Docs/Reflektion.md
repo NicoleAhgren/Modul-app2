@@ -10,6 +10,7 @@ Det jag lärt mig mest av boken relaterat till min kod är avoid disinformation 
 Jag har av kapitel 3 insett att jag ofta bryter mot do one thing i min modul, där har jag metoder som hanterar logik, utskrift och tillstånd samtidigt. Jag har även insett att jag gjort samma misstag i min modulapp, jag har just nu funktionen nextQuestion som gör nästan allt i min kod vilket kan vara förvirrande och det hade varit bättre att dela upp den i mindre delar. 
 
 ![Bild på kod](Images/image.png)
+
 Här är ett exempel på en del av funktionen där den bland annat hanterar timeouts och skapar svarsknappar.
 
 
@@ -22,6 +23,7 @@ Jag har alltid kommenterat mycket i min kod och efter att ha läst kapitel 4 så
 När det kommer till formatering känns det som att jag redan hade stor koll på, både meningen med det och hur man ska formatera. Läsbarheten är väldigt viktig i kod och jag tycker att jag lyckats bra med det för det mesta, men jag insåg att i min funktion nextQuestion() så ser det lite blockigt ut på vissa delar och jag hade kunnat lägga till lite mer vertical openness - Alltså lägga till lite fler mellanrum när nya saker händer.
 
 ![Bild på kod](Images/image-2.png)
+
 Här är ett exempel på där jag tycker att det ser en aning blockigt ut just nu. Jag hade exempelvis lagt ett whitespace under const restart och innan den första console.log().
 
 ## Reflektion kap 6
@@ -39,20 +41,40 @@ Kapitel 7 av boken lärde mig att det är bra att starta koden med try/catch, ä
 
 ## Reflektion kap 8
 
-I min kod använder jag mig en del av console.log() för att kunna hålla koll på att de rätta statsen (antal rätt, fel och timeouts) skrivs ut och loggas. Boken förklarar third-party code och jag har lärt mig mer om hur jag har använt det. Som sagt, jag har använt mig mycket av console.log() och det hade varit bättre att göra en funktion som exempelvis printSummary(). Det hade gjort det lättare att sedan ändra i koden eftersom istället för att begöva ändra hela appen så hade jag kunnat ändra i funktionen.
+I min kod använder jag mig en del av console.log() för att kunna hålla koll på rätt statistik (antal rätt, fel och timeouts) skrivs ut och loggas. Boken förklarar third-party code och jag har lärt mig mer om hur jag har använt det i min kod. Jag har lärt mig att det är viktigt att isolera användningen av det eftersom man inte sprider beroenden i sin kod och det blir lättare att göra ändringar i koden senare om det isoleras.
+Som sagt, jag använde mig console.log() men istället för att göra det direkt i koden hade jag kunnat skapa en metod, exempelvis printSummary(), som skriver ut min statistik. Det gör det lättare att underhålla koden eftersom man kan justera inne i metoden istället för mitt i koden.
+
+![Bild på kod](Images/image-6.png)
+
+Exempelvis här använder jag mig av console.log() för att logga statistiken.
 
 ## Reflektion kap 9
 
-Jag har inte gjort några automatiska tester till min modul eller modulapp men jag har ändå lärt mig nya saker om enhetstester av boken. En testkod ska vara ren och tydlig för som boken förklarar "having dirty tests is equivilant to, if not worse than, having no tests.". Det är även viktigt att man testar en sak i taget eller har ett koncept per test eftersom det annars kan bli förvirrande att förstå vad som testas. Jag läste även om F.I.R.S.T. och det har gett mig en stor inblick för nästa gång jag ska skriva automatiska tester då det är en väldigt bra beskrivning på vad man ska tänka på.  
+Jag har inte gjort några automatiska tester till min modul eller modulapp men jag har ändå lärt mig nya saker om enhetstester av boken. En testkod ska vara ren och tydlig för som boken förklarar "having dirty tests is equivilant to, if not worse than, having no tests.". Det är även viktigt att man testar en sak i taget eller har ett koncept per test eftersom det annars kan bli förvirrande att förstå vad som testas. Jag läste även om F.I.R.S.T. och det har gett mig en stor inblick för nästa gång jag ska skriva automatiska tester då det är en väldigt bra beskrivning på vad man ska tänka på. Jag har just nu ett manuellt test för min modul där jag använder mig av readline och console.log() för att loopa igenom frågorna och se till så att rätt statistik loggas. Min testkod är inte isolerad just nu vilket är viktigt enligt F.I.R.S.T, mitt test sker just nu i en stor while loop som testar allt samtidigt vilket gör att allt blir beroende av varandra. Det hade varit bättre att dela upp testet i mindre separata delar.
+
+![Bild på kod](Images/image-9.png)
+
+Hur min stora loop i min testkod ser ut just nu.
 
 ## Reflektion kap 10
 
 Kapitel 10 förklarar att klasser ska vara små och ha tydliga ansvar. Min quizEngine klass i min modul hade nog kunnat delas upp mer då den är väldigt stor och det är mycket som händer. Boken berättar även att en klass ska ha lite publika metoder och det är något jag inte har, jag måste ändra metoder som används internt till privata då de bara ska vara där för att stödja de publika metoderna. 
+
+![Bild på kod](Images/image-7.png)
+
+Jag fick inte med allt men här är min gamla jättelånga metod med många ansvar.
+
+Nu har jag fixat om min kod, jag har skapat en ny klass där jag delat upp min långa funktion till många små så att alla har ett tydligt ansvar istället för att ha en stor funktion som har många ansvar. Boken nämner att encapsulation är bra att tänka på när man skriver kod, alltså att behålla sina variabler och funktioner privata. Jag tänkte på detta medans jag skrev om koden och när jag gjorde om min stora funktion till många små gjorde jag även dem som kunde privata.
+
+![Bild på kod](Images/image-8.png)
+
+Exempel på en av de nya privata metoderna i min kod.
 
 ## Reflektion kap 11
 
 Kapitel 11 har lärt mig mer om hur min modulapp är uppbygt som ett system. Jag har insett att jag ofta blandar logisk som borde vara separerad som exempelvis att jag både initierar och startar mitt quiz med samma funktion. Det hade varit bättre att dela upp det i exempelvis quizSetup() och initiateQuiz() för att göra det tydligare. 
 
 ![bild på kod](Images/image-5.png)
+
 Exempelvis här dela upp frågorna i en funktion och starta quizet i en annan.
 
